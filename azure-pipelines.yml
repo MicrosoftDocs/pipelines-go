@@ -38,14 +38,14 @@ steps:
   displayName: 'Get dependencies'
   
 - script: |
-   go test -v 2>&1 | go-junit-report > ./reports/xunit.xml    
+   go test -v 2>&1 | go-junit-report > xunit.xml    
   continueOnError: 'true'
   displayName: 'Run unit tests'
 
 - task: PublishTestResults@2
   inputs:
     testRunner: JUnit
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/**/reports/xunit.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/**/xunit.xml'
 
 - task: PublishPipelineArtifact@0
   inputs:

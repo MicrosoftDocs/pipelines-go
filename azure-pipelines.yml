@@ -30,18 +30,17 @@ steps:
         curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
         dep ensure
     fi
-
-  workingDirectory: '$(modulePath)'
-  displayName: 'Get dependencies and build app'
-  
-- script: |
     go get github.com/jstemmer/go-junit-report
     go get github.com/axw/gocov/gocov
     go get github.com/AlekSi/gocov-xml
     go get -u gopkg.in/matm/v1/gocov-html
     go get github.com/tebeka/go2xunit
     mkdir reports 
-    go test -v 2>&1 | go2xunit > ./reports/xunit.xml    
+  workingDirectory: '$(modulePath)'
+  displayName: 'Get dependencies'
+  
+- script: |
+   2>&1 go test -v | go2xunit > ./reports/xunit.xml    
   continueOnError: 'true'
   displayName: 'Run unit tests'
 

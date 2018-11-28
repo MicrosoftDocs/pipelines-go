@@ -40,26 +40,19 @@ steps:
   displayName: 'Get dependencies'
   
 - script: |
-   2>&1 go test -v | go2xunit -output xunit.xml    
+   2>&1 go test -v | go2xunit -output reports/xunit.xml    
   continueOnError: 'true'
   displayName: 'Run unit tests'
 
 - task: PublishTestResults@2
   inputs:
     testRunner: JUnit
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/**/xunit.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/**/reports/xunit.xml'
 
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'Xunit XML'
     targetPath: './reports/'
-
-    
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'cobertura' 
-    summaryFileLocation: $(System.DefaultWorkingDirectory)/**/coverage.xml
-    reportDirectory: $(System.DefaultWorkingDirectory)/**/coverage
 
 - script: |
     go build -v

@@ -45,4 +45,4 @@ steps:
     mkdir coverage
     gocov-html < coverage.json > coverage/index.html
   workingDirectory: '$(modulePath)'
-displayName: 'Run unit test'
+  displayName: 'Run unit test'

@@ -26,7 +26,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(getPort(), nil))
 }
 
-func Increment(x int) {
+// Increment function increments the entered value by 1
+func Increment(x int) (result int) {
 	return x + 1
 }
 

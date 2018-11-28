@@ -41,7 +41,6 @@ steps:
     go get -u gopkg.in/matm/v1/gocov-html
     mkdir ./reports
     go test -v 2>&1 | go-junit-report > ./reports/junit.xml
-  workingDirectory: '$(modulePath)'
   continueOnError: 'true'
   displayName: 'Run unit tests'
     

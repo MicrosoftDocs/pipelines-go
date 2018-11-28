@@ -45,9 +45,8 @@ steps:
   displayName: 'Run unit tests'
     
 - script: |
-    mkdir reports
+    mkdir ./reports
     go build -v 2>&1 | go-junit-report > ./reports/junit.xml
-  workingDirectory: '$(modulePath)'
   displayName: 'Build app'
 
 - task: PublishTestResults@2

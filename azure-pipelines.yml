@@ -35,7 +35,6 @@ steps:
     go get github.com/AlekSi/gocov-xml
     go get -u gopkg.in/matm/v1/gocov-html
     go get github.com/tebeka/go2xunit
-  workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies'
   
 - script: |

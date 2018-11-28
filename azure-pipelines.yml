@@ -41,4 +41,5 @@ steps:
     go get -u gopkg.in/matm/v1/gocov-html
     go test -v 
   workingDirectory: '$(modulePath)'
+  failOnStderr: false
   displayName: 'Run unit test'

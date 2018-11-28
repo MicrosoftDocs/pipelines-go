@@ -50,13 +50,6 @@ steps:
   workingDirectory: '$(modulePath)'
   displayName: 'Build app'
 
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'JaCoCo' 
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/reports/code-cov-report.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/**/reports/code-cov-report.html'
-    failIfCoverageEmpty: true
-
 - task: PublishTestResults@2
   inputs:
     testRunner: JUnit
@@ -66,3 +59,11 @@ steps:
   inputs:
     artifactName: 'Junit XML'
     targetPath: './reports/'
+
+    
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo' 
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/reports/code-cov-report.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/reports/code-cov-report.html'
+    failIfCoverageEmpty: true

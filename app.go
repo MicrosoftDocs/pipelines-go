@@ -1,28 +1,33 @@
 package main
 
 import (
-  "fmt"
-  "html/template"
-  "log"
-  "net/http"  
-  "os"
-  "github.com/Microsoft/ApplicationInsights-Go/appinsights"
+	"fmt"
+	"html/template"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/Microsoft/ApplicationInsights-Go/appinsights"
 )
 
 type PageVars struct {
-	Message         string
-	Language        string
+	Message  string
+	Language string
 }
 
 func main() {
 	client := appinsights.NewTelemetryClient(os.Getenv("APPINSIGHTS_INSTRUMENTATIONKEY"))
-	request := appinsights.NewRequestTelemetry("GET", "https://myapp.azurewebsites.net/", 1 , "Success")
-	client.Track(request)	
+	request := appinsights.NewRequestTelemetry("GET", "https://myapp.azurewebsites.net/", 1, "Success")
+	client.Track(request)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("img"))))
-	http.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("fonts"))))	
+	http.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("fonts"))))
 	http.HandleFunc("/", Home)
 	log.Fatal(http.ListenAndServe(getPort(), nil))
+}
+
+func Increment(x int) (result int) {
+	return result = x + 1
 }
 
 func getPort() string {
@@ -35,8 +40,8 @@ func getPort() string {
 
 func render(w http.ResponseWriter, tmpl string, pageVars PageVars) {
 
-	tmpl = fmt.Sprintf("views/%s", tmpl) 
-	t, err := template.ParseFiles(tmpl)      
+	tmpl = fmt.Sprintf("views/%s", tmpl)
+	t, err := template.ParseFiles(tmpl)
 
 	if err != nil { // if there is an error
 		log.Print("template parsing error: ", err) // log it
@@ -51,7 +56,7 @@ func render(w http.ResponseWriter, tmpl string, pageVars PageVars) {
 
 func Home(w http.ResponseWriter, req *http.Request) {
 	pageVars := PageVars{
-		Message: "Success!",
+		Message:  "Success!",
 		Language: "Go Lang",
 	}
 	render(w, "index.html", pageVars)

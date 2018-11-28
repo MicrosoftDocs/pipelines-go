@@ -39,7 +39,7 @@ steps:
   displayName: 'Get dependencies'
   
 - script: |
-   2>&1 go test -v | go2xunit -output ./reports/xunit.xml    
+   go test -v 2>&1 | go-junit-report > ./reports/xunit.xml    
   continueOnError: 'true'
   displayName: 'Run unit tests'
 

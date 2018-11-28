@@ -35,12 +35,11 @@ steps:
     go get github.com/AlekSi/gocov-xml
     go get -u gopkg.in/matm/v1/gocov-html
     go get github.com/tebeka/go2xunit
-    mkdir reports 
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies'
   
 - script: |
-   2>&1 go test -v | go2xunit -output reports/xunit.xml    
+   2>&1 go test -v | go2xunit -output ./reports/xunit.xml    
   continueOnError: 'true'
   displayName: 'Run unit tests'
 

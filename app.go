@@ -26,8 +26,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(getPort(), nil))
 }
 
-func Increment(x int) (result int) {
-	return result = x + 1
+func Increment(x int) {
+	return x + 1
 }
 
 func getPort() string {

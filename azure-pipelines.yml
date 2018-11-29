@@ -21,7 +21,6 @@ steps:
     mv !(gopath) '$(modulePath)'
     echo '##vso[task.prependpath]$(GOBIN)'
     echo '##vso[task.prependpath]$(GOROOT)/bin'
-  workingDirectory: '$(modulePath)'
   displayName: 'Set up the Go workspace'
 
 - script: |

@@ -39,8 +39,23 @@ steps:
   displayName: 'Get dependencies'
   
 - script: |
-    go test -v
+    go test -v 2>&1 | go-junit-report > junit.xml
+    cp report.xml /reports/junit.xml
   continueOnError: 'true'
   workingDirectory: '$(modulePath)'
   displayName: 'Run unit tests'
 
+- task: PublishTestResults@2
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/**/reports/junit.xml'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'junit XML'
+    targetPath: './reports/'
+
+- script: |
+    go build -v
+  displayName: 'Build app'
+  continueOnError: 'true'

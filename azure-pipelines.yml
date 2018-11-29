@@ -58,5 +58,6 @@ steps:
 
 - script: |
     go build -v
-  displayName: 'Build app'
+  workingDirectory: '$(modulePath)'
   continueOnError: 'true'
+  displayName: 'Build app'

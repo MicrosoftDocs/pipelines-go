@@ -27,8 +27,8 @@ func main() {
 }
 
 // Increment function increments the entered value by 1
-func Summer(x int, y int) int {
-    return x + y
+func Increment(x int) (result int) {
+	return x + 1
 }
 
 func getPort() string {

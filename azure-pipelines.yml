@@ -21,6 +21,7 @@ steps:
     mv !(gopath) '$(modulePath)'
     echo '##vso[task.prependpath]$(GOBIN)'
     echo '##vso[task.prependpath]$(GOROOT)/bin'
+  workingDirectory: '$(modulePath)'
   displayName: 'Set up the Go workspace'
 
 - script: |
@@ -35,10 +36,12 @@ steps:
     go get github.com/AlekSi/gocov-xml
     go get -u gopkg.in/matm/v1/gocov-html
     go get github.com/tebeka/go2xunit
+  workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies'
   
 - script: |
-   go test -v
+    go test -v
   continueOnError: 'true'
+  workingDirectory: '$(modulePath)'
   displayName: 'Run unit tests'
 

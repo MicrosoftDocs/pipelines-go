@@ -49,12 +49,12 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testRunner: JUnit
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/**/reports/junit.xml'
+    testResultsFiles: '$(modulePath)/**/reports/junit.xml'
 
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'junit XML'
-    targetPath: '$(System.DefaultWorkingDirectory)/**/reports/'
+    targetPath: '$(modulePath)/**/reports/'
 
 - script: |
     go build -v

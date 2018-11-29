@@ -63,7 +63,7 @@ steps:
 
 - task: PublishPipelineArtifact@0
   inputs:
-    artifactName: 'junit XML'
+    artifactName: 'Test Reports'
     targetPath: '$(modulePath)/reports/'
 
 - script: |

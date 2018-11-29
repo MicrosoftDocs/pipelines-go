@@ -18,7 +18,7 @@ func TestIncrement(t *testing.T) {
 
 	for _, table := range tables {
 		res := Increment(table.x)
-		if res != table.n {
+		if res != table.y {
 			t.Errorf("Increment of (%d) was incorrect returned as (%d) instead of (%d)!", table.x, table.y, res)
 		}
 	}

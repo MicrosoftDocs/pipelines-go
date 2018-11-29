@@ -49,6 +49,12 @@ steps:
   continueOnError: 'true'
   workingDirectory: '$(modulePath)'
   displayName: 'Run unit tests'
+  
+- script: |
+    go build -v
+  workingDirectory: '$(modulePath)'
+  continueOnError: 'true'
+  displayName: 'Build app'
 
 - task: PublishTestResults@2
   inputs:
@@ -65,9 +71,3 @@ steps:
   inputs:
     artifactName: 'Test Reports'
     targetPath: '$(modulePath)/reports/'
-
-- script: |
-    go build -v
-  workingDirectory: '$(modulePath)'
-  continueOnError: 'true'
-  displayName: 'Build app'

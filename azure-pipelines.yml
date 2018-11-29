@@ -40,7 +40,8 @@ steps:
   
 - script: |
     go test -v 2>&1 | go-junit-report > junit.xml
-    cp junit.xml /reports/junit.xml
+    mkdir reports
+    cp junit.xml ./reports/junit.xml
   continueOnError: 'true'
   workingDirectory: '$(modulePath)'
   displayName: 'Run unit tests'

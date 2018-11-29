@@ -54,7 +54,7 @@ steps:
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'junit XML'
-    targetPath: './reports/'
+    targetPath: '$(System.DefaultWorkingDirectory)/**/reports/'
 
 - script: |
     go build -v

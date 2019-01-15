@@ -67,8 +67,3 @@ steps:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(modulePath)/reports/coverage.xml'
     reportDirectory: '$(modulePath)/reports/'
-
-- task: PublishPipelineArtifact@0
-  inputs:
-    artifactName: 'Test Reports'
-    targetPath: '$(modulePath)/reports/'

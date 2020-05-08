@@ -8,6 +8,7 @@ trigger:
 resources:
 - repo: self
 
+
 variables:
 
   # Container registry service connection established during pipeline creation
@@ -27,7 +28,14 @@ variables:
 stages:
 - stage: Build
   displayName: Build stage
-  jobs:  
+  jobs:
+  - job: RunInContainer
+    pool:
+      vmImage: 'ubuntu-16.04'
+    container: golang:latest
+    steps:
+    - script: go version
+    
   - job: Build
     displayName: Build
     pool:

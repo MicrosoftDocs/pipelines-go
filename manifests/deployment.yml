@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: kostiscodefreshpipelinesgo 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kostiscodefreshpipelinesgo 
+    spec:
+      containers:
+        - name: kostiscodefreshpipelinesgo 
+          image: kostisazureregistry.azurecr.io/kostiscodefreshpipelinesgo
+          ports:
+          - containerPort: 80

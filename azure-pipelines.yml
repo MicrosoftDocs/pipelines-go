@@ -59,8 +59,3 @@ steps:
     go build -v .
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies, then build'
-- task: Go@0
-  inputs:
-    command: 'test'
-    arguments: '-v'
-    workingDirectory: '$(modulePath)'

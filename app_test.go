@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestIncrementCase0(t *testing.T) {
+/*func TestIncrementCase0(t *testing.T) {
 	tables := []struct {
 		x int
 		y int
@@ -22,7 +22,7 @@ func TestIncrementCase0(t *testing.T) {
 			t.Errorf("Increment of (%d) was incorrect returned as (%d) instead of (%d)!", table.x, table.y, res)
 		}
 	}
-}
+}*/
 
 func TestIncrementCase1(t *testing.T) {
 	if Increment(2) != 3 {

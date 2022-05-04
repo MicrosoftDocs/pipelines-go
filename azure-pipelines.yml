@@ -2,7 +2,7 @@
 # Build your Go project.
 # Add steps that test, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/go
-
+# SET UP GO
 trigger:
 - master
 
@@ -24,6 +24,7 @@ steps:
     command: 'get'
     arguments: '-d'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
+  # BUILD
 - task: Go@0
   inputs:
     command: 'build'
@@ -59,6 +60,7 @@ steps:
     go build -v .
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies, then build'
+  # TEST
 - task: Go@0
   inputs:
     command: 'test'

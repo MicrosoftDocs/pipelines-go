@@ -30,7 +30,7 @@ func TestIncrementCase1(t *testing.T) {
 	}
 }
 func TestIncrementCase2(t *testing.T) {
-	if Increment(5) != 7 {
+	if Increment(5) != 6 {
 		t.Error("Expected increment of 5 to be 7")
 	}
 }

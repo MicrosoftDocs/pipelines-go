@@ -12,8 +12,8 @@ func TestIncrementCase0(t *testing.T) {
 		{1, 2},
 		{2, 3},
 		{3, 4},
-		{4, 6},
-		{5, 7},
+		{4, 5},
+		{5, 6},
 	}
 
 	for _, table := range tables {
@@ -29,8 +29,9 @@ func TestIncrementCase1(t *testing.T) {
 		t.Error("Expected increment of 2 to be 3")
 	}
 }
-//func TestIncrementCase2(t *testing.T) {
-	//if Increment(5) != 7 {
-		//t.Error("Expected increment of 5 to be 7")
-	//}
-//}
+func TestIncrementCase2(t *testing.T) {
+	if Increment(5) != 6 {
+		t.Error("Expected increment of 5 to be 6")
+	}
+}
+
